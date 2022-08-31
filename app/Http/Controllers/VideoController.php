@@ -21,7 +21,7 @@ class VideoController extends Controller
      */
     public function index($id)
     {
-        $videos = Video::where('prefecture_id', $id)->get();
+        $videos = Video::orderBy('id', 'desc')->where('prefecture_id', $id)->get();
         return view('video.index', compact('videos'));
     }
 

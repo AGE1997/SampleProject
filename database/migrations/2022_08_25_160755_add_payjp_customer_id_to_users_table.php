@@ -26,7 +26,7 @@ class AddPayjpCustomerIdToUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('payjp_customer_id')->nullable()->comment('payjp顧客ID');
+            $table->doropColumn('payjp_customer_id');
         });
     }
 }
