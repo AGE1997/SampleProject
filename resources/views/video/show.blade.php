@@ -22,13 +22,6 @@
   @endif
 
   <div class="card-body">
-  <!-- <div class="card text-center">
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-  <ul class="list-group list-group-horizontal">
-    <li class="list-group-item">{{$video->user->first_name}}</li>
-    <li class="list-group-item">{{$video->price}}円</li>
-  </ul> -->
       <h3 class="card-title">{{$video->title}}</h3>
       <p class="card-text"><small class="text-muted">{{$video->created_at->diffForHumans()}}</small></p>
       <p class="card-text">{{$video->user->first_name}}</p>
@@ -36,15 +29,13 @@
       <p class="card-text">{{$video->genre->name}}</p>
       <p class="card-text">{{$video->prefecture->name}}</p>
       <p class="card-text">{{$video->description}}</p>
+      <div class="text-center">
       @if (auth()->user()->role === 'member')
         @if (Auth::id() == $video->user_id)
           <a href="{{ route('video.edit', ['id' => $video->id]) }}" class="btn btn-primary">編集する</a>
           <span class="ml-2">
             <form method="POST" action="{{ route('video.destroy', ['id' => $video->id]) }}" id="delete_{{ $video->id}}">
               @csrf
-              <!-- <botton type="submit" class="btn btn-danger" onclick="return confirm('本当に削除しますか？');">
-                削除する
-              </botton> -->
               <a href="#" class="btn btn-danger" data-id="{{ $video->id }}" onclick="deletePost(this)">削除する</a>
             </form>
           </span>
@@ -56,14 +47,11 @@
       <span class="ml-2">
         <form method="POST" action="{{ route('video.destroy', ['id' => $video->id]) }}" id="delete_{{ $video->id}}">
           @csrf
-          <!-- <botton type="submit" class="btn btn-danger" onclick="return confirm('本当に削除しますか？');">
-            削除する
-          </botton> -->
           <a href="#" class="btn btn-danger" data-id="{{ $video->id }}" onclick="deletePost(this)">削除する</a>
         </form>
       </span>
       @endif
-
+      </div>
   <!-- </div> -->
 </div>
 
